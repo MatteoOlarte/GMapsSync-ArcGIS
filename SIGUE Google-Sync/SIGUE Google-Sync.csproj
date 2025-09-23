@@ -31,6 +31,10 @@
     <Content Include="Images\BrowserUpdated32.png" />
     <Content Include="DarkImages\BrowserUpdated16.png" />
     <Content Include="DarkImages\BrowserUpdated32.png" />
+    <Content Include="Images\Settings16.png" />
+    <Content Include="Images\Settings32.png" />
+    <Content Include="DarkImages\Settings16.png" />
+    <Content Include="DarkImages\Settings32.png" />
   </ItemGroup>
 
   <ItemGroup>

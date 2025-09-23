@@ -7,7 +7,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd"
 >
-  <AddInInfo id="{fdfbf666-0e6a-46ce-94d5-522d904b1c3b}" version="1.1.0" desktopVersion="3.4.55405">
+  <AddInInfo id="{fdfbf666-0e6a-46ce-94d5-522d904b1c3b}" version="1.2.0" desktopVersion="3.4.55405">
     <Name>GMaps</Name>
     <Description>Add-In para ArcGIS Pro que permite sincronizar vistas y ubicaciones entre ArcGIS y Google Maps, incluyendo acceso directo a Street View.</Description>
     <Image>Images\AddinDesktop32.png</Image>
@@ -28,6 +28,12 @@
         <content className="Presentation.View.PropertyPageView" />
       </insertPage>
     </updateSheet>
+
+    <insertSheet id="GMapsSync_ConfigSheet" caption="Configuración">
+      <page className="Presentation.ViewModel.PropertyPageViewModel" id="GMapsSync_ConfigPage" caption="Configuración">
+        <content className="Presentation.View.PropertyPageView" />
+      </page>
+    </insertSheet>
   </propertySheets>
 
   <conditions>
@@ -44,6 +50,7 @@
       <tabs>
         <tab id="GMapsSync_GMapsTab" caption="GMaps" keytip="">
           <group refID="GMapsSync_Group" />
+          <group refID="GMapsSync_ConfigGroup" />
         </tab>
       </tabs>
 
@@ -52,6 +59,10 @@
           <tool refID="GMapsSync_StreetViewTool" size="large" />
           <button refID="GMapsSync_ArcGISGoogleMapsSyncButton" size="middle" />
           <button refID="GMapsSync_GoogleMapsArcGISSyncButton" size="middle" />
+        </group>
+
+        <group id="GMapsSync_ConfigGroup" caption="Configuración" keytip="GMapsSync_ConfigGroup">
+          <button refID="GMapsSync_ConfigButton" size="large" />
         </group>
       </groups>
 
@@ -93,6 +104,19 @@
           keytip="GMapsSync_GoogleMapsArcGISSyncButton"
         >
           <tooltip heading="Sincronizar con ArcGIS">Sincroniza la vista o datos actuales de Google Maps con ArcGIS Pro. <disabledText>Acceso denegado: permisos insuficientes.</disabledText></tooltip>
+        </button>
+
+        <button
+          id="GMapsSync_ConfigButton"
+          caption="Ajustes"
+          className="Presentation.View.ConfigButton"
+          loadOnClick="true"
+          smallImage="Images\Settings16.png"
+          largeImage="Images\Settings32.png"
+          condition="GMapsSync_MapToolDomainCheck"
+          keytip="GMapsSync_ConfigButton"
+        >
+          <tooltip heading="Sincronizar con ArcGIS"><disabledText>Acceso denegado: permisos insuficientes.</disabledText></tooltip>
         </button>
       </controls>
     </insertModule>
