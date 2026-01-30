@@ -16,7 +16,7 @@ namespace GMapsSync.Src.Presentation.ViewModel;
 public class GoogleMapsArcGISSyncViewModel
 {
     private static readonly Regex Pattern = new Regex(@"@(-?\d+\.{1}\d+),(-?\d+\.{1}\d+),(\d+\.?\d*)[z|m]", RegexOptions.Compiled);
-    private readonly WebDriverHelper driver;
+    private readonly WebDriverService driver;
 
 
     public GoogleMapsArcGISSyncViewModel()

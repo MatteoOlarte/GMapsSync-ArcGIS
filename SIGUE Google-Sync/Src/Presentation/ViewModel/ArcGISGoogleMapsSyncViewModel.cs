@@ -14,7 +14,7 @@ namespace GMapsSync.Src.Presentation.ViewModel;
 
 internal class ArcGISGoogleMapsSyncViewModel
 {
-    private readonly WebDriverHelper driver;
+    private readonly WebDriverService driver;
 
     private readonly string url;
 

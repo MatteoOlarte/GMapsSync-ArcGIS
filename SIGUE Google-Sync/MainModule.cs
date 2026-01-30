@@ -27,7 +27,7 @@ internal class MainModule : Module
 
     protected override void Uninitialize()
     {
-        GMapsSync.Src.Application.Services.WebDriverHelper.CloseAll(); // Ensure all WebDriver instances are closed
+        Src.Application.Services.WebDriverService.CloseAll();
         base.Uninitialize();
     }
 

@@ -9,7 +9,7 @@ namespace GMapsSync.Src.Application.UseCases.WebDriver;
 
 public class GetWebDriver
 {
-    public static WebDriverHelper Invoke()
+    public static WebDriverService Invoke()
     {
         var path = MainModule.Settings.driver_path;
         var browser = MainModule.Settings.web_browser.ToBrowser();
@@ -24,7 +24,7 @@ public class GetWebDriver
         }
         try
         {
-            return new WebDriverHelper(browser, path);
+            return new WebDriverService(browser);
         }
         catch (Exception ex)
         {

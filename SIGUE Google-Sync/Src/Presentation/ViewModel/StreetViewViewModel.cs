@@ -14,7 +14,7 @@ using UseCases = Application.UseCases.WebDriver;
 internal sealed class StreetViewViewModel
 {
     private record Cords(double Latitude, double Longitude, double Heading);
-    private readonly WebDriverHelper driver;
+    private readonly WebDriverService driver;
 
     public StreetViewViewModel()
     {
