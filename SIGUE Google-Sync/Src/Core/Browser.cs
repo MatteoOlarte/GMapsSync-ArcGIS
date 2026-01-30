@@ -15,14 +15,15 @@ public static class BrowserExtensions
     {
         "Google Chrome" => Browser.Chrome,
         "Firefox" => Browser.Firefox,
-        "MS-Edge" => Browser.MsEdge,
-        _ => Browser.Chrome
+        "Microsoft Edge" => Browser.MsEdge,
+        _ => Browser.MsEdge
     };
 
     public static string Value(this Browser browser) => browser switch
     {
         Browser.Chrome => "Google Chrome",
         Browser.Firefox => "Firefox",
+        Browser.MsEdge => "Microsoft Edge",
         _ => browser.ToString()
     };
 }
