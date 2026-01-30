@@ -2,9 +2,8 @@
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Contracts;
 
-using GMapsSync.Core;
-
-using Common = GMapsSync.Application.UseCases.Common;
+using GMapsSync.Src.Core;
+using Common = GMapsSync.Src.Application.UseCases.Common;
 
 namespace GMapsSync;
 
@@ -28,7 +27,7 @@ internal class MainModule : Module
 
     protected override void Uninitialize()
     {
-        Application.Services.WebDriverHelper.CloseAll(); // Ensure all WebDriver instances are closed
+        GMapsSync.Src.Application.Services.WebDriverHelper.CloseAll(); // Ensure all WebDriver instances are closed
         base.Uninitialize();
     }
 

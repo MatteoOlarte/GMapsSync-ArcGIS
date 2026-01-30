@@ -1,4 +1,4 @@
-# GMaps-Sync para ArcGIS Pro 
+# GMaps-Sync para ArcGIS Pro
 
 Un Add-In para ArcGIS Pro que potencia tu experiencia de mapeo integrando Google Street View y sincronizando la vista con Google Maps de forma bidireccional. Explora, navega y compara ubicaciones en tiempo real, todo desde la comodidad de tu entorno de ArcGIS Pro.
 

@@ -5,7 +5,7 @@
   defaultNamespace="GMapsSync"
   xmlns="http://schemas.esri.com/DADF/Registry"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd"
+  xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///D:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd"
 >
   <AddInInfo id="{fdfbf666-0e6a-46ce-94d5-522d904b1c3b}" version="1.2.0" desktopVersion="3.4.55405">
     <Name>GMaps</Name>
@@ -20,18 +20,18 @@
   <propertySheets>
     <updateSheet refID="esri_core_optionsPropertySheet">
       <insertPage
-        className="Presentation.ViewModel.PropertyPageViewModel"
+        className="Src.Presentation.ViewModel.PropertyPageViewModel"
         id="GMapsSync_PropertyPage"
         caption="GMaps"
         group="Application"
       >
-        <content className="Presentation.View.PropertyPageView" />
+        <content className="Src.Presentation.View.PropertyPageView" />
       </insertPage>
     </updateSheet>
 
     <insertSheet id="GMapsSync_ConfigSheet" caption="Configuración">
-      <page className="Presentation.ViewModel.PropertyPageViewModel" id="GMapsSync_ConfigPage" caption="Configuración">
-        <content className="Presentation.View.PropertyPageView" />
+      <page className="Src.Presentation.ViewModel.PropertyPageViewModel" id="GMapsSync_ConfigPage" caption="Configuración">
+        <content className="Src.Presentation.View.PropertyPageView" />
       </page>
     </insertSheet>
   </propertySheets>
@@ -70,7 +70,7 @@
         <tool
           id="GMapsSync_StreetViewTool"
           caption="Street View"
-          className="Presentation.View.StreetViewTool"
+          className="Src.Presentation.View.StreetViewTool"
           loadOnClick="true"
           smallImage="Images\StreetViewTool16.png"
           largeImage="Images\StreetViewTool32.png"
@@ -83,7 +83,7 @@
         <button
           id="GMapsSync_ArcGISGoogleMapsSyncButton"
           caption="Abrir en Maps"
-          className="Presentation.View.ArcGISGoogleMapsSyncButton"
+          className="Src.Presentation.View.ArcGISGoogleMapsSyncButton"
           loadOnClick="true"
           smallImage="Images\OpenInBrowser16.png"
           largeImage="Images\OpenInBrowser32.png"
@@ -96,7 +96,7 @@
         <button
           id="GMapsSync_GoogleMapsArcGISSyncButton"
           caption="Traer de Maps"
-          className="Presentation.View.GoogleMapsArcGISSyncButton"
+          className="Src.Presentation.View.GoogleMapsArcGISSyncButton"
           loadOnClick="true"
           smallImage="Images\BrowserUpdated16.png"
           largeImage="Images\BrowserUpdated32.png"
@@ -109,7 +109,7 @@
         <button
           id="GMapsSync_ConfigButton"
           caption="Ajustes"
-          className="Presentation.View.ConfigButton"
+          className="Src.Presentation.View.ConfigButton"
           loadOnClick="true"
           smallImage="Images\Settings16.png"
           largeImage="Images\Settings32.png"

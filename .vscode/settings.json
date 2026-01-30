@@ -1,33 +1,38 @@
 {
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false
-  },
-  "cSpell.ignorePaths": [
-    "package-lock.json",
-    "node_modules",
-    "vscode-extension",
-    ".git/{info,lfs,logs,refs,objects}/**",
-    ".git/{index,*refs,*HEAD}",
-    ".vscode",
-    ".vscode-insiders",
-    "SIGUE Google-Sync.sln",
-    "SIGUE Google-Sync/Config.daml",
-    "SIGUE Google-Sync/SIGUE Google-Sync.csproj"
-  ],
-  "cSpell.words": ["Addin", "EAAB", "EPSG", "Wkid"],
-  "files.autoSave": "afterDelay",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.removeUnused": "explicit"
-  },
-  "files.associations": {
-    "*.daml": "xml",
-    "*.xaml": "xml"
-  },
-  "xml.format.maxLineWidth": 280,
-  "csharpOrganizeUsings.removeUnnecessaryUsings": false
+	"cSpell.ignorePaths": [
+		".git/{index,*refs,*HEAD}",
+		".git/{info,lfs,logs,refs,objects}/**",
+		".vscode",
+		".vscode-insiders",
+		"SIGUE Google-Sync.sln",
+		"SIGUE Google-Sync/Config.daml",
+		"SIGUE Google-Sync/SIGUE Google-Sync.csproj",
+		"node_modules",
+		"package-lock.json",
+		"vscode-extension"
+	],
+	"cSpell.words": ["Addin", "EAAB", "EPSG", "Wkid"],
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "explicit",
+		"source.removeUnused": "explicit"
+	},
+	"editor.detectIndentation": false,
+	"editor.formatOnSave": true,
+	"files.associations": {
+		"*.config": "xml",
+		"*.daml": "xml",
+		"*.xaml": "xml"
+	},
+	"files.autoSave": "afterDelay",
+	"github.copilot.enable": {
+		"*": true,
+		"markdown": false,
+		"plaintext": false,
+		"scminput": false
+	},
+	"csharpOrganizeUsings.disableUnusedUsingsRemoval": false,
+	"[xml]": {
+		"editor.tabSize": 2
+	},
+	"xml.format.maxLineWidth": 280
 }
