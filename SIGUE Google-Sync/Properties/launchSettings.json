@@ -1,8 +1,8 @@
 {
-  "profiles": {
-    "SIGUE Google-Sync": {
-      "commandName": "Executable",
-      "executablePath": "D:\\Program Files\\ArcGIS\\Pro\\bin\\ArcGISPro.exe"
-    }
-  }
+	"profiles": {
+		"SIGUE Google-Sync": {
+			"commandName": "Executable",
+			"executablePath": "C:\\Program Files\\ArcGIS\\Pro\\bin\\ArcGISPro.exe"
+		}
+	}
 }
