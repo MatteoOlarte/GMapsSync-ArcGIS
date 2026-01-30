@@ -128,8 +128,10 @@ internal sealed class StreetViewTool : MapTool
             if (this.viewModel is null)
             {
                 MessageBox.Show(
-                    "No se pudo inicializar la herramienta de Street View.\n\nVerifique la configuración del navegador y la ruta del driver. Si el problema persiste, contacte al administrador.",
-                    "Error al inicializar Street View"
+                    messageText: "No se pudo inicializar la herramienta.\n\nVerifique la configuraciÃ³n del navegador y la ruta del driver. Si el problema persiste, contacte al administrador.",
+                    caption: "Error - Falla en el Driver",
+                    button: System.Windows.MessageBoxButton.OK,
+                    icon: System.Windows.MessageBoxImage.Error
                 );
                 return;
             }

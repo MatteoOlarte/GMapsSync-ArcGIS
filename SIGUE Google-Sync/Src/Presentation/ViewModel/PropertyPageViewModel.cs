@@ -8,7 +8,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using ArcGIS.Desktop.Catalog;
+using ArcGIS.Desktop.Core;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Contracts;
 
@@ -93,15 +94,22 @@ internal class PropertyPageViewModel : Page
 
     private void OnBrowseDriverExecute()
     {
-        OpenFileDialog dialog = new OpenFileDialog
+        var filter = new BrowseProjectFilter("esri_browseDialogFilters_executables");
+
+        var dlg = new OpenItemDialog
         {
-            Filter = "Executable Files|*.exe",
-            Title = "Select WebDriver Executable"
+            Title = "Seleccionar Driver",
+            BrowseFilter = filter,
+            MultiSelect = false,
+            InitialLocation = Project.Current?.HomeFolderPath
         };
 
-        if (dialog.ShowDialog() == true)
+        var ok = dlg.ShowDialog();
+        
+        if (ok == true && dlg.Items != null && dlg.Items.Any())
         {
-            DriverPath = dialog.FileName;
+            var item = dlg.Items.First();
+            DriverPath = item.Path;
         }
     }
 }

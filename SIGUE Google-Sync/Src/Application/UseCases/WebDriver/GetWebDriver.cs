@@ -24,7 +24,7 @@ public class GetWebDriver
         }
         try
         {
-            return new WebDriverService(browser);
+            return new WebDriverService(browser, path);
         }
         catch (Exception ex)
         {

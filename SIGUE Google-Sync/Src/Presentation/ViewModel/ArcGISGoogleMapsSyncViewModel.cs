@@ -46,7 +46,13 @@ internal class ArcGISGoogleMapsSyncViewModel
                 return;
             }
         }
-        MessageBox.Show("No hay una vista de mapa activa o no se pudo transformar la extensión a WGS84.", "Error");
+        
+        MessageBox.Show(
+            messageText: "No hay una vista de mapa activa o no se pudo transformar la extensión a WGS84.",
+            caption: "Error - Sincronización Fallida",
+            button: System.Windows.MessageBoxButton.OK,
+            icon: System.Windows.MessageBoxImage.Error
+        );
     }
 
     private double CalculateScaleFactor(double x)

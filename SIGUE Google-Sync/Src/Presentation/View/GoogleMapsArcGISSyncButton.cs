@@ -5,8 +5,8 @@ namespace GMapsSync.Src.Presentation.View;
 using System;
 
 using ArcGIS.Desktop.Framework.Contracts;
-using ArcGIS.Desktop.Framework.Threading.Tasks;
 using ArcGIS.Desktop.Framework.Dialogs;
+using ArcGIS.Desktop.Framework.Threading.Tasks;
 
 using GMapsSync.Src.Presentation.ViewModel;
 
@@ -38,8 +38,10 @@ internal class GoogleMapsArcGISSyncButton : Button
         if (this.viewModel is null)
         {
             MessageBox.Show(
-                "No se pudo inicializar la herramienta.\n\nVerifique la configuración del navegador y la ruta del driver. Si el problema persiste, contacte al administrador.",
-                "Error al inicializar la herramienta"
+                messageText: "No se pudo inicializar la herramienta.\n\nVerifique la configuración del navegador y la ruta del driver. Si el problema persiste, contacte al administrador.",
+                caption: "Error - Falla en el Driver",
+                button: System.Windows.MessageBoxButton.OK,
+                icon: System.Windows.MessageBoxImage.Error
             );
             return;
         }
@@ -49,7 +51,12 @@ internal class GoogleMapsArcGISSyncButton : Button
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Error al sincronizar con Google Maps: {ex.Message}", "Error");
+            MessageBox.Show(
+                messageText: $"Error al sincronizar con Google Maps: {ex.Message}",
+                caption: "Error - Sincronización Fallida",
+                button: System.Windows.MessageBoxButton.OK,
+                icon: System.Windows.MessageBoxImage.Error
+            );
         }
     }
 }

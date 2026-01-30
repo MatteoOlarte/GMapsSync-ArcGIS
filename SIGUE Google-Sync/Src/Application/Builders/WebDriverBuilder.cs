@@ -4,6 +4,8 @@ namespace GMapsSync.Src.Application.Builders;
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 
 using GMapsSync.Src.Core;
 
@@ -14,6 +16,7 @@ using OpenQA.Selenium.Firefox;
 
 public interface IWebDriverBuilder
 {
+    IWebDriverBuilder WithDriverPath(string? path);
     IWebDriverBuilder WithHeadless(bool headless = true);
     IWebDriverBuilder WithStartUrl(string url);
     IWebDriverBuilder WithWindowSize(int width, int height);
@@ -26,6 +29,7 @@ public interface IWebDriverBuilder
 
 public abstract class WebDriverBuilderBase : IWebDriverBuilder
 {
+    protected string? _driverPath;
     protected bool _headless;
     protected string? _startUrl;
     protected (int width, int height)? _windowSize;
@@ -33,6 +37,12 @@ public abstract class WebDriverBuilderBase : IWebDriverBuilder
     protected bool _disableAutomation;
     protected bool _disableInfobars;
     protected int _logLevel = 3;
+
+    public IWebDriverBuilder WithDriverPath(string? path)
+    {
+        _driverPath = path;
+        return this;
+    }
 
     public IWebDriverBuilder WithHeadless(bool headless = true)
     {
@@ -77,6 +87,43 @@ public abstract class WebDriverBuilderBase : IWebDriverBuilder
     }
 
     public abstract IWebDriver Build();
+
+    protected bool TryGetDriverServiceParams(out string? driverDirectory, out string? driverExecutable)
+    {
+        driverDirectory = null;
+        driverExecutable = null;
+
+        if (string.IsNullOrWhiteSpace(_driverPath))
+        {
+            return false;
+        }
+
+        if (File.Exists(_driverPath))
+        {
+            driverDirectory = Path.GetDirectoryName(_driverPath);
+            driverExecutable = Path.GetFileName(_driverPath);
+            return !string.IsNullOrWhiteSpace(driverDirectory) && !string.IsNullOrWhiteSpace(driverExecutable);
+        }
+
+        if (Directory.Exists(_driverPath))
+        {
+            driverDirectory = _driverPath;
+            driverExecutable = null;
+            return true;
+        }
+
+        return false;
+    }
+
+    protected static bool IsLikelyDriverManagerInitFailure(Exception ex)
+    {
+        if (ex is WebDriverException or InvalidOperationException or FileNotFoundException or Win32Exception)
+        {
+            return true;
+        }
+
+        return ex.InnerException is not null && IsLikelyDriverManagerInitFailure(ex.InnerException);
+    }
 }
 
 public class ChromeDriverBuilder : WebDriverBuilderBase
@@ -117,7 +164,23 @@ public class ChromeDriverBuilder : WebDriverBuilderBase
             options.AddArgument(arg);
         }
 
-        return new ChromeDriver(options);
+        try
+        {
+            return new ChromeDriver(options);
+        }
+        catch (Exception ex) when (IsLikelyDriverManagerInitFailure(ex))
+        {
+            if (!TryGetDriverServiceParams(out var driverDirectory, out var driverExecutable))
+            {
+                throw;
+            }
+
+            var service = driverExecutable is null
+                ? ChromeDriverService.CreateDefaultService(driverDirectory!)
+                : ChromeDriverService.CreateDefaultService(driverDirectory!, driverExecutable);
+
+            return new ChromeDriver(service, options);
+        }
     }
 }
 
@@ -148,7 +211,24 @@ public class FirefoxDriverBuilder : WebDriverBuilderBase
             options.AddArgument(arg);
         }
 
-        var driver = new FirefoxDriver(options);
+        IWebDriver driver;
+        try
+        {
+            driver = new FirefoxDriver(options);
+        }
+        catch (Exception ex) when (IsLikelyDriverManagerInitFailure(ex))
+        {
+            if (!TryGetDriverServiceParams(out var driverDirectory, out var driverExecutable))
+            {
+                throw;
+            }
+
+            var service = driverExecutable is null
+                ? FirefoxDriverService.CreateDefaultService(driverDirectory!)
+                : FirefoxDriverService.CreateDefaultService(driverDirectory!, driverExecutable);
+
+            driver = new FirefoxDriver(service, options);
+        }
 
         if (_startUrl != null)
         {
@@ -198,7 +278,23 @@ public class EdgeDriverBuilder : WebDriverBuilderBase
             options.AddArgument(arg);
         }
 
-        return new EdgeDriver(options);
+        try
+        {
+            return new EdgeDriver(options);
+        }
+        catch (Exception ex) when (IsLikelyDriverManagerInitFailure(ex))
+        {
+            if (!TryGetDriverServiceParams(out var driverDirectory, out var driverExecutable))
+            {
+                throw;
+            }
+
+            var service = driverExecutable is null
+                ? EdgeDriverService.CreateDefaultService(driverDirectory!)
+                : EdgeDriverService.CreateDefaultService(driverDirectory!, driverExecutable);
+
+            return new EdgeDriver(service, options);
+        }
     }
 }
 

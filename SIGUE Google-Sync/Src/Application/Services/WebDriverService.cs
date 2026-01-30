@@ -10,11 +10,13 @@ using OpenQA.Selenium;
 public class WebDriverService
 {
     private static IWebDriver? _driver;
+    private readonly string? _driverPath;
 
     public IWebDriver Driver => _driver!;
 
-    public WebDriverService(Browser browser)
+    public WebDriverService(Browser browser, string? driverPath)
     {
+        _driverPath = driverPath;
         if (_driver is null)
         {
             _driver = CreateDriver(browser);
@@ -27,7 +29,11 @@ public class WebDriverService
     {
         _driver?.Dispose();
 
-        return WebDriverBuilderFactory.CreateBuilder(browser).WithStartUrl("https://www.google.com/maps").Build();
+        return WebDriverBuilderFactory
+            .CreateBuilder(browser)
+            .WithDriverPath(_driverPath)
+            .WithStartUrl("https://www.google.com/maps")
+            .Build();
     }
 
     public static void CloseAll()

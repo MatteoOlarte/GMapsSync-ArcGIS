@@ -1,3 +1,5 @@
+namespace GMapsSync.Src.Presentation.ViewModel;
+
 #nullable enable
 
 using System;
@@ -8,10 +10,7 @@ using ArcGIS.Desktop.Framework.Dialogs;
 using ArcGIS.Desktop.Mapping;
 
 using GMapsSync.Src.Application.Services;
-
-using UseCases = GMapsSync.Src.Application.UseCases;
-
-namespace GMapsSync.Src.Presentation.ViewModel;
+using UseCases = Application.UseCases;
 
 public class GoogleMapsArcGISSyncViewModel
 {
@@ -53,7 +52,12 @@ public class GoogleMapsArcGISSyncViewModel
             view.PanTo(targetPoint);
             return;
         }
-        MessageBox.Show("No se pudieron transformar las coordenadas.", "Error");
+        MessageBox.Show(
+            messageText: "No se pudieron transformar las coordenadas.",
+            caption: "Error - Sincronización Fallida",
+            button: System.Windows.MessageBoxButton.OK,
+            icon: System.Windows.MessageBoxImage.Error
+        );
     }
 
 
