@@ -27,10 +27,10 @@
     <Content Include="Images\OpenInBrowser32.png" />
     <Content Include="DarkImages\OpenInBrowser16.png" />
     <Content Include="DarkImages\OpenInBrowser32.png" />
-    <Content Include="Images\BrowserUpdated16.png" />
-    <Content Include="Images\BrowserUpdated32.png" />
-    <Content Include="DarkImages\BrowserUpdated16.png" />
-    <Content Include="DarkImages\BrowserUpdated32.png" />
+    <Content Include="Images\OpenFromBrowser16.png" />
+    <Content Include="Images\OpenFromBrowser32.png" />
+    <Content Include="DarkImages\OpenFromBrowser16.png" />
+    <Content Include="DarkImages\OpenFromBrowser32.png" />
     <Content Include="Images\Settings16.png" />
     <Content Include="Images\Settings32.png" />
     <Content Include="DarkImages\Settings16.png" />

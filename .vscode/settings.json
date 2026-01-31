@@ -11,7 +11,7 @@
 		"package-lock.json",
 		"vscode-extension"
 	],
-	"cSpell.words": ["Addin", "EAAB", "EPSG", "Wkid"],
+	"cSpell.words": ["Addin", "EAAB", "EPSG", "esri", "Wkid"],
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "explicit",
 		"source.removeUnused": "explicit"
@@ -26,13 +26,16 @@
 	"files.autoSave": "afterDelay",
 	"github.copilot.enable": {
 		"*": true,
-		"markdown": false,
 		"plaintext": false,
+		"markdown": true,
 		"scminput": false
 	},
 	"csharpOrganizeUsings.disableUnusedUsingsRemoval": false,
 	"[xml]": {
 		"editor.tabSize": 2
+	},
+	"[markdown]": {
+		"editor.wordWrap": "off"
 	},
 	"xml.format.maxLineWidth": 280
 }

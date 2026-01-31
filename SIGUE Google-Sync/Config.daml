@@ -7,7 +7,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///D:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd"
 >
-  <AddInInfo id="{fdfbf666-0e6a-46ce-94d5-522d904b1c3b}" version="1.3.0" desktopVersion="3.4.55405">
+  <AddInInfo id="{fdfbf666-0e6a-46ce-94d5-522d904b1c3b}" version="1.3.1" desktopVersion="3.4.55405">
     <Name>GMaps</Name>
     <Description>Add-In para ArcGIS Pro que permite sincronizar vistas y ubicaciones entre ArcGIS y Google Maps, incluyendo acceso directo a Street View.</Description>
     <Image>Images\AddinDesktop32.png</Image>
@@ -98,8 +98,8 @@
           caption="Traer de Maps"
           className="Src.Presentation.View.GoogleMapsArcGISSyncButton"
           loadOnClick="true"
-          smallImage="Images\BrowserUpdated16.png"
-          largeImage="Images\BrowserUpdated32.png"
+          smallImage="Images\OpenFromBrowser16.png"
+          largeImage="Images\OpenFromBrowser32.png"
           condition="GMapsSync_MapToolDomainCheck"
           keytip="GMapsSync_GoogleMapsArcGISSyncButton"
         >
