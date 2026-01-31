@@ -94,7 +94,7 @@
     />
 
     <TextBlock
-      Text="Versión: 1.3.0"
+      Text="Versión: 1.3.1"
       Style="{DynamicResource Esri_TextBlockRegular}"
       Opacity="0.7"
       Margin="0,12,0,0"
